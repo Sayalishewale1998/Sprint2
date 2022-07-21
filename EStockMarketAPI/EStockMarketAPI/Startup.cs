@@ -1,4 +1,7 @@
+using EStockMarketAPI.Interfaces;
 using EStockMarketAPI.Models;
+using EStockMarketAPI.ViewModels;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -8,9 +11,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace EStockMarketAPI
@@ -29,8 +34,30 @@ namespace EStockMarketAPI
         {
             services.AddControllers();
             services.AddSwaggerGen();
-            services.AddDbContext<EStockMarketDBContext>(x => x.UseSqlServer(Configuration.GetConnectionString("EStockMarketDBConnection")));
-        }
+
+            services.AddDbContext<EStockMarketDBContext>(x => x.UseSqlServer(Configuration.GetConnectionString("StockMarketDbConnection")));
+            services.AddTransient<IJWTManagerRepository, JWTManagerRepository>();
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(o =>
+            {
+                var key = Encoding.UTF8.GetBytes(Configuration["JWT:Key"]);
+                o.SaveToken = true;
+                o.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = Configuration["JWT:Issuer"],
+                    ValidAudience = Configuration["JWT:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(key)
+                };
+            });
+            }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -41,16 +68,22 @@ namespace EStockMarketAPI
             }
 
             app.UseHttpsRedirection();
-            app.UseSwaggerUI();
             app.UseSwagger();
-            app.UseRouting();
+            app.UseSwaggerUI();
+
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
+            app.UseRouting();
+
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+
         }
     }
 }

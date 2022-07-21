@@ -13,58 +13,40 @@ namespace EStockMarketAPI.Controllers
     public class CompanyController : ControllerBase
     {
         EStockMarketDBContext db;
-
-     public CompanyController(EStockMarketDBContext _db)
+        public CompanyController(EStockMarketDBContext _db)
         {
             db = _db;
         }
         [HttpGet]
-
         public IEnumerable<TblCompany> GetCompanies()
         {
             return db.TblCompanies;
         }
-        [HttpPost]
-        public string Post([FromBody] TblCompany tblcompany)
+        [HttpPost] 
+        public string Post([FromBody] TblCompany tblCompany)
         {
-            if (tblcompany.CompanyTurnover > 1000000000)
+            if (tblCompany.CompanyTurnover > 100000000)
             {
-                db.TblCompanies.Add(tblcompany);
+                db.TblCompanies.Add(tblCompany);
                 db.SaveChanges();
                 return "success";
             }
             else
             {
-                return "Company turnover should be greater than 10cr";
+                return "Company Turnover must be greater than 10Cr";
             }
-
-        }
-        [HttpPut]
-
-        public string Put([FromBody] TblCompany tblCompany)
-        {
-            var companyobj = db.TblCompanies.Where(x => x.CompanyCode == tblCompany.CompanyCode);
-            if(companyobj != null)
-            {
-                db.TblCompanies.Update(tblCompany);
-                db.SaveChanges();
-                return "Success";
-            }
-            return "Fail";
         }
         [HttpDelete]
-
         public string Delete([FromBody] string CompanyCode)
         {
-            var companyobj = db.TblCompanies.Where(x => x.CompanyCode == CompanyCode).FirstOrDefault();
-            if(companyobj != null)
+            var delobj = db.TblCompanies.Where(x => x.CompanyCode == CompanyCode).FirstOrDefault();
+            if (delobj == null)
             {
-                db.TblCompanies.Remove(companyobj);
+                db.TblCompanies.Remove(delobj);
                 db.SaveChanges();
                 return "Success";
             }
             return "Fail";
         }
-
     }
 }

@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { MyprofileComponent } from './myprofile/myprofile.component';
+import { StockComponent } from './stock/stock.component';
+import { CompanyComponent } from './company/company.component';
+
 const routes: Routes = [
   {
     path: 'home',
@@ -12,6 +16,7 @@ const routes: Routes = [
     path: '',
     component: HomeComponent
   },
+  
   {
     path: 'login',
     component: LoginComponent
@@ -20,7 +25,18 @@ const routes: Routes = [
     path: 'register',
     component: RegisterComponent
   },
-
+  {
+    path: 'company',
+    component: CompanyComponent
+  },
+  {
+    path: 'stock',
+    component: StockComponent
+  },
+  {
+    path: 'myprofile',
+    component: MyprofileComponent
+  },
 ];
 
 @NgModule({

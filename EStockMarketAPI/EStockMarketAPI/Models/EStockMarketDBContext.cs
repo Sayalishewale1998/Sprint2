@@ -20,7 +20,9 @@ namespace EStockMarketAPI.Models
         public virtual DbSet<TblCompany> TblCompanies { get; set; }
         public virtual DbSet<TblCustomer> TblCustomers { get; set; }
         public virtual DbSet<TblLogin> TblLogins { get; set; }
+        public virtual DbSet<TblStock> TblStocks { get; set; }
         public virtual DbSet<TblUser> TblUsers { get; set; }
+        public virtual DbSet<TblUserDatum> TblUserData { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -47,9 +49,11 @@ namespace EStockMarketAPI.Models
 
                 entity.Property(e => e.CompanyCode).HasMaxLength(50);
 
-                entity.Property(e => e.CompanyLogo).HasMaxLength(100);
+                entity.Property(e => e.CompanyEmail).HasMaxLength(100);
 
                 entity.Property(e => e.CompanyName).HasMaxLength(200);
+
+                entity.Property(e => e.CompanyPassword).HasMaxLength(100);
 
                 entity.Property(e => e.CompanyWebsite).HasMaxLength(200);
 
@@ -79,11 +83,24 @@ namespace EStockMarketAPI.Models
             {
                 entity.ToTable("TblLogin");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
-
                 entity.Property(e => e.Password).HasMaxLength(100);
 
                 entity.Property(e => e.UserName).HasMaxLength(100);
+
+                entity.Property(e => e.UserType).HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<TblStock>(entity =>
+            {
+                entity.ToTable("TblStock");
+
+                entity.Property(e => e.CompanyCode).HasMaxLength(100);
+
+                entity.Property(e => e.CompanyName).HasMaxLength(200);
+
+                entity.Property(e => e.EndDate).HasColumnType("datetime");
+
+                entity.Property(e => e.StartDate).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<TblUser>(entity =>
@@ -101,6 +118,13 @@ namespace EStockMarketAPI.Models
                 entity.Property(e => e.LastName).HasMaxLength(50);
 
                 entity.Property(e => e.UserEmail).HasMaxLength(200);
+            });
+
+            modelBuilder.Entity<TblUserDatum>(entity =>
+            {
+                entity.ToTable("TblUserDatum");
+
+                entity.Property(e => e.CompanyName).HasMaxLength(200);
             });
 
             OnModelCreatingPartial(modelBuilder);

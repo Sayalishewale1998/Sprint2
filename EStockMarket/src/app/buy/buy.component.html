@@ -1,0 +1,54 @@
+<ng-container *ngIf="StockDetails.length !=0">
+    <div class="container">
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Company Name</th>
+                            <th>Share Price</th>
+                            <th>Share Quantity</th>
+                            
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let stock of StockDetails; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{stock.companyName}}</td>
+                          
+                            <th style="width: 12%;">{{stock.stockPrice}}</th>
+                            <td style="width: 12%;">{{stock.stockQuantity}}</td>
+                            
+                           
+                        </tr>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td><button routerLink="/get" class="btn btn-primary">Buy More</button></td>
+                            <td><button class="btn btn-success" (click)="AddShare()" >Done</button></td>
+                            <td><strong>Grand Total : Rs. {{grandTotal}}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+
+<ng-container *ngIf="StockDetails.length ==0">
+    <div class="container">
+        <div class="card">
+            <h5 class="card-title">My Account</h5>
+        </div>
+        <div class="center">
+
+            <h4>Your Account is Empty!</h4>
+            <h6>Add Shares now</h6>
+            <button class="btn btn-primary" routerLink="/get">Buy Now</button>
+        </div>
+    </div>
+</ng-container>
+<div class="container">
+

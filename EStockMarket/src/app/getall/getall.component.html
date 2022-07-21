@@ -1,0 +1,41 @@
+<br>
+<div class="conatiner-fluid">
+    <div class="container">
+        <h2 class="animate__heartBeat" align="center">All Company Details</h2>
+    </div>
+</div>
+<br><br><br>
+<div class="container-fluid">
+    <div class="container">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Company Code</th>
+                    <th scope="col">Company Name</th>
+                    <th scope="col">Company CEO</th>
+                    <th scope="col">Company TurnOver</th>
+                    
+                    <th scope="col">Company Website</th>
+                    <th scope="col">Stock Exchange</th>
+                    <th scope="col">Stock Quantity</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of companyDetails">
+                    <th scope="row">{{item.id}}</th>
+                    <td> {{item.companyCode}} </td>
+                    <td> {{item.companyName}} </td>
+                    <td> {{item.companyCeo}} </td>
+                    <td> {{item.companyTurnover}} </td>
+                    <td> {{item.companyWebsite}} </td>
+                    <td> {{item.stockExchange}} </td>
+                    <td>{{item.stockQuantity}}</td>
+                   
+                </tr>
+               
+            </tbody>
+        </table>
+    </div>
+</div><br><br><br>

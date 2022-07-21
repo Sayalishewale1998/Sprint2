@@ -14,6 +14,8 @@ namespace EStockMarketAPI.Models
         public long? CompanyTurnover { get; set; }
         public string CompanyWebsite { get; set; }
         public string StockExchange { get; set; }
-        public string CompanyLogo { get; set; }
+        public string CompanyPassword { get; set; }
+        public string CompanyEmail { get; set; }
+        public int? StockQuantity { get; set; }
     }
 }

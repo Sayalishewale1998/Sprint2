@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32602.291
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EStockMarketAPI", "EStockMarketAPI\EStockMarketAPI.csproj", "{EB07C93C-C939-4257-AAD5-EDB8AE84F6A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EStockMarketAPI", "EStockMarketAPI\EStockMarketAPI.csproj", "{ED84406F-DDF5-4BF3-BAEF-F0B5B8C17AA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EB07C93C-C939-4257-AAD5-EDB8AE84F6A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EB07C93C-C939-4257-AAD5-EDB8AE84F6A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EB07C93C-C939-4257-AAD5-EDB8AE84F6A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EB07C93C-C939-4257-AAD5-EDB8AE84F6A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED84406F-DDF5-4BF3-BAEF-F0B5B8C17AA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED84406F-DDF5-4BF3-BAEF-F0B5B8C17AA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED84406F-DDF5-4BF3-BAEF-F0B5B8C17AA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED84406F-DDF5-4BF3-BAEF-F0B5B8C17AA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {477C59B6-8A86-402F-AF3D-8998D10585AA}
+		SolutionGuid = {215B61AF-E97D-4168-A63B-3F8081D1F9D0}
 	EndGlobalSection
 EndGlobal
