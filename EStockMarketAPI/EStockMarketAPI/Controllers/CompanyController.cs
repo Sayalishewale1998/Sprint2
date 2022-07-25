@@ -18,11 +18,14 @@ namespace EStockMarketAPI.Controllers
             db = _db;
         }
         [HttpGet]
+
+        [Route("getall")]
         public IEnumerable<TblCompany> GetCompanies()
         {
             return db.TblCompanies;
         }
-        [HttpPost] 
+        [HttpPost]
+
         public string Post([FromBody] TblCompany tblCompany)
         {
             if (tblCompany.CompanyTurnover > 100000000)
@@ -35,6 +38,7 @@ namespace EStockMarketAPI.Controllers
             {
                 return "Company Turnover must be greater than 10Cr";
             }
+
         }
         [HttpDelete]
         public string Delete([FromBody] string CompanyCode)
@@ -50,3 +54,10 @@ namespace EStockMarketAPI.Controllers
         }
     }
 }
+
+
+
+
+
+
+    

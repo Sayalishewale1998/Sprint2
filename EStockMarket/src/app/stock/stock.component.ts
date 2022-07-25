@@ -25,8 +25,8 @@ export class StockComponent implements OnInit {
       companyName:this.StockDetail.companyName,
       startDate:this.StockDetail.startDate, 
       endDate:this.StockDetail.endDate,     
-      stockPrice:this.StockDetail.stockPrice,
-      stockQuantity:this.StockDetail.stockQuantity,          
+      stockPrice:Number(this.StockDetail.stockPrice),
+      stockQuantity:Number(this.StockDetail.stockQuantity),          
     }
   
       this.httpc.post("https://localhost:44319/api/Stock",stockdto).subscribe(res=>this.PostSuccess(res),res=>this.PostError(res));
@@ -38,9 +38,9 @@ export class StockComponent implements OnInit {
   PostError(res:any){
     console.log(res);
   }
+  
 
-
-  getData(){
+  getStock(){
     console.log("Hi");
     this.httpc.get("https://localhost:44319/api/Stock").subscribe(res=>this.GetSuccess(res),res=>this.GetError(res));
   }
@@ -50,4 +50,5 @@ export class StockComponent implements OnInit {
   GetError(input:any){
     console.log(input);
   }
+ 
 }

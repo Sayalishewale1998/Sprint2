@@ -1,6 +1,7 @@
 ﻿using EStockMarketAPI.Interfaces;
 using EStockMarketAPI.Models;
 using EStockMarketAPI.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,6 +21,12 @@ namespace EStockMarketAPI.Controllers
         {
             db = _db;
             iJWTManagerRepository = _iJWTManagerRepository;
+        }
+        [HttpGet]
+       
+        public IEnumerable<TblLogin> GetLogins()
+        {
+            return db.TblLogins;
         }
         [HttpPost]
         [Route("login")]

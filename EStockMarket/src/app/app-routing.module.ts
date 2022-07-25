@@ -6,6 +6,9 @@ import { RegisterComponent } from './register/register.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import { StockComponent } from './stock/stock.component';
 import { CompanyComponent } from './company/company.component';
+import { BuyComponent } from './buy/buy.component';
+import { GetComponent } from './get/get.component';
+import { GetallComponent } from './getall/getall.component';
 
 const routes: Routes = [
   {
@@ -36,6 +39,18 @@ const routes: Routes = [
   {
     path: 'myprofile',
     component: MyprofileComponent
+  },
+  {
+    path: 'buy',
+    component: BuyComponent
+  },
+  {
+    path: 'get',
+    component: GetComponent
+  },
+  {
+    path: 'getall',
+    component: GetallComponent
   },
 ];
 

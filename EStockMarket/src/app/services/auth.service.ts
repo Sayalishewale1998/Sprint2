@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import{HttpClient} from '@angular/common/http'
+import{HttpClient, HttpErrorResponse} from '@angular/common/http'
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,4 +24,5 @@ export class AuthService {
     localStorage.removeItem('token');
     this._router.navigate(['/home']);
   }
+  
 }

@@ -5,31 +5,36 @@
                 <div class="Card-header">
                     <h3 class="mb-0" align="center">Register</h3>
                 </div>
+                <div class="form-check"></div>
                 <div class="card-body">
                     <div class="form">
-                        <div class="col-md-12">
-                            <label class="form-label" for="floatingPassword">UserType</label>
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Select
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" >Company</a>
-                                  <a class="dropdown-item" href="#">Customer</a>
-                                  <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                              </div>
-                        </div>
+                        <form class="user-login" [formGroup]="loginForm" (ngSubmit)="onLogin()">
                         <div class="col-md-12">
                             <label class="form-label" for="floatingInput">UserName</label>
                             <input type="email" class="form-control" id="floatingInput"
-                                [(ngModel)]="registerUserData.userName" placeholder="Please enter your email">
+                                [(ngModel)]="registerUserData.userName" placeholder="Please Enter Your Email"  formControlName="email">
+                                <div *ngIf="submitted && formControl.email.errors" class="text-danger">
+                                    <div *ngIf="formControl.email.errors.email">Email must be valid.</div>
+                                    <div *ngIf="formControl.email.errors.required">Email is required.</div>
+                                  </div>
                         </div>
                         <div class="form-check"></div>
                         <div class="col-md-12">
                             <label class="form-label" for="floatingPassword">Password</label>
                             <input type="password" class="form-control" id="floatingPassword"
-                                [(ngModel)]="registerUserData.password" placeholder="Password">
+                                [(ngModel)]="registerUserData.password" placeholder="Password" formControlName="password">
+                                <div *ngIf="submitted && formControl.password.errors" class="text-danger">
+                                    <div *ngIf="formControl.password.errors.required">Password is required.</div>
+                                    <div *ngIf="formControl.password.errors.pattern">
+                                      <!-- <h3>Password must contain the following:</h3> -->
+                                      <ul>
+                                        <li>Password should be alphanumeric</li>
+                                        <li>A letter of the password should be capital</li>
+                                        <li>Password must contain a special character (@, $, !, &, etc)</li>
+                                        <li>Password length must be greater than 7 characters</li>
+                                      </ul>
+                                    </div>
+                                  </div>
                         </div>
                         <div class="col-12">
                             <div class="form-check"></div>
@@ -38,7 +43,7 @@
                         <div class="col-md-12">
                             <label class="form-label">Already Registered?</label>
                              <a routerLink="/login">Click Here</a>
-                        </div>
+                        </div></form>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CompanyComponent } from './company/company.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import { StockComponent } from './stock/stock.component';
@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { GetComponent } from './get/get.component';
 import { GetallComponent } from './getall/getall.component';
 import { BuyComponent } from './buy/buy.component';
+
 
 
 @NgModule({
@@ -27,12 +28,13 @@ import { BuyComponent } from './buy/buy.component';
     StockComponent,
     GetComponent,
     GetallComponent,
-    BuyComponent
+    BuyComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
     HttpClientModule
   ],

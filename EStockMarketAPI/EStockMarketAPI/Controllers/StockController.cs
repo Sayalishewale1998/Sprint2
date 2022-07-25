@@ -18,6 +18,7 @@ namespace EStockMarketAPI.Controllers
             db = _db;
         }
         [HttpGet]
+        [Route("get")]
         //user can get the details of stock start end date
         public IEnumerable<TblStock> GetStocks()
         {
@@ -30,6 +31,35 @@ namespace EStockMarketAPI.Controllers
             db.TblStocks.Add(tblStock);
             db.SaveChanges();
             return "success";
+        }
+        [HttpPut]
+        public string Put([FromBody] TblStock tblStock)
+        {
+            var tblSampleObj = db.TblStocks.Where(x => x.Id == tblStock.Id);
+            if (tblSampleObj !=null)
+            {
+                db.TblStocks.Update(tblStock);
+                db.SaveChanges();
+                return "Success";
+            }
+            return "Fail";
+        }
+        [HttpDelete]
+        public string Delete([FromBody] int Id)
+        {
+            var tblSampleObj = db.TblStocks.Where(x => x.Id == Id).FirstOrDefault();
+            if (tblSampleObj != null)
+            {
+                db.TblStocks.Remove(tblSampleObj);
+                db.SaveChanges();
+                if (tblSampleObj == null)
+                {
+
+                }
+                return "Success";
+            }
+            return "Fail";
+
         }
     }
 }

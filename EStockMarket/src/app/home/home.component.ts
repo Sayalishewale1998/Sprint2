@@ -9,12 +9,11 @@ import { StockService } from '../services/stock.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
   constructor(private _stockservice:StockService,public httpc:HttpClient) { }
   StockDetail: Stock = new Stock();
   StockDetails: Array<Stock> = new Array<Stock>();
   ngOnInit(): void {
-    //this._stockservice.getStocks().subscribe(res => this.StockDetails = res, err => console.log(err))
+   
    
   }
   getStock(){
@@ -26,6 +25,13 @@ export class HomeComponent implements OnInit {
   }
   GetError(input:any){
     console.log(input);
+  }
+  uploadFile=(files:any)=>{
+    console.log("Hi");
+    
+    if(files.length==0){
+      return;
+    }
   }
   
 }

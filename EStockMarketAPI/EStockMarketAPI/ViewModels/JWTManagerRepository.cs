@@ -39,7 +39,7 @@ namespace EStockMarketAPI.ViewModels
             }
             else
             {
-                _isAdmin = db.TblLogins.Any(x => x.UserName == registerViewModel.UserName && x.Password == registerViewModel.Password && x.IsAdmin == 1);
+                _isAdmin = db.TblLogins.Any(x => x.UserName == registerViewModel.UserName && x.Password == registerViewModel.Password);
             }
             UserRecords = db.TblLogins.ToList().ToDictionary(x => x.UserName, x => x.Password);
             if (!UserRecords.Any(x => x.Key == registerViewModel.UserName && x.Value == registerViewModel.Password))

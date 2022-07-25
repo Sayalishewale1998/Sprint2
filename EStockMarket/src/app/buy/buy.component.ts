@@ -34,7 +34,7 @@ export class BuyComponent implements OnInit {
   
     }
 
-    this.httpc.post("https://localhost:44319/api/Buy", item).subscribe(res => this.PostSuccess(res), res => this.PostError(res));
+    this.httpc.post("https://localhost:44319/api/Stock", item).subscribe(res => this.PostSuccess(res), res => this.PostError(res));
     this.Buyer = new buyer();
   }
   PostSuccess(res: any) {
